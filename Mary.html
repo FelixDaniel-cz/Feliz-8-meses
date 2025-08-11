@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor - Feliz 8 meses</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary: #ff758f;
+            --secondary: #ff7eb3;
+            --dark: #3a0e3a;
+            --light: #fff9fb;
+            --accent: #ffd166;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/375835b9-f737-436b-b4cf-bbcd893bcd0c.png') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery */
+        .gallery {
+            padding: 4rem 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        .photos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .photo-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 350px;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(58, 14, 58, 0.9), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-card:hover .photo-caption {
+            transform: translateY(0);
+        }
+        
+        /* Poems Section */
+        .poems {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .poems::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--dark);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+        
+        .poems-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        .poem {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .poem:hover {
+            transform: scale(1.02);
+        }
+        
+        .poem::before {
+            content: """;
+            font-size 5rem;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .poem::after {
+            content: """;
+            font-size 5rem;
+            position: absolute;
+            bottom: -50px;
+            right: 10px;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .poem h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .poem p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .poem .author {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        /* Hearts Animation */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--primary);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .footer p {
+            margin-bottom: 1rem;
+        }
+        
+        .heart-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Expandable Gallery Styles */
+        .hidden-photos {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .moments-section {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .moments-section.active .hidden-photos {
+            display: grid;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .photos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .poem {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <header class="header">
+        <div class="header-content container">
+            <h1>Feliz 8 Meses Amore Mio</h1>
+            <p>Porque cada día a tu lado es un regalo, hoy quiero celebrar lo especial que eres en mi vida.</p>
+        </div>
+    </header>
+    
+    <section class="gallery container">
+        <div class="gallery-title">
+            <h2>Nuestros Momentos</h2>
+            <p>Capturas de felicidad que atesoraré por siempre</p>
+        </div>
+        
+        <div class="photos-container">
+            <div class="moments-section" id="first-date">
+                <div class="photo-card">
+                    <img src="el dia que le pedi ser mi novia.jpg" alt="Pareja feliz en su primera cita en un café acogedor">
+                    <div class="photo-caption">
+                        <h3>Nuestra Primera Cita</h3>
+                        <p>El día que todo comenzó</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="moments-section" id="adventures">
+                <div class="photo-card">
+                    <img src="picnic juntos.jpg" alt="Pareja abrazada frente a un hermoso atardecer en la playa">
+                    <div class="photo-caption">
+                        <h3>Nuestro Picnic en el jardin botanico</h3>
+                        <p>Cada lugar es inolvidable a tu lado</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="moments-section" id="special-moments">
+                <div class="photo-card">
+                    <img src="vestidos de gala.jpg" alt="Pareja riendo juntos en un día de campo con globos y flores">
+                    <div class="photo-caption">
+                        <h3>Momentos Especiales</h3>
+                        <p>Escapando para tomarnos fotos vestidos de gala</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Photo Cards -->
+            <div class="photo-card">
+                <img src="navidad con amore.jpg" alt="Pareja compartiendo dulces momentos">
+                <div class="photo-caption">
+                    <h3>Una navidad Juntos</h3>
+                    <p>Felices en cre por navidad</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="tomando por primera vez.jpg" alt="Pareja mirando el atardecer juntos">
+                <div class="photo-caption">
+                    <h3>En el Karaoke</h3>
+                    <p>Cantando y tomando con mi amor</p>
+                </div>
+            </div>
+            <!-- Additional Photo Cards -->
+            <div class="photo-card">
+                <img src="6 mese juntos.jpg" alt="Pareja compartiendo dulces momentos">
+                <div class="photo-caption">
+                    <h3>6 Meses Juntos</h3>
+                    <p>Nuestro amor creciendo cada dia mas</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="amor en mi graduacion.jpg" alt="Pareja compartiendo dulces momentos">
+                <div class="photo-caption">
+                    <h3>Juntos en mi graduacion</h3>
+                    <p>Acompañanmdome en un dia especial para mi</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="dia de cine.jpg" alt="Pareja mirando el atardecer juntos">
+                <div class="photo-caption">
+                    <h3>Juntos disfrutando de una pelicula</h3>
+                    <p>Felices luego de ver superman</p>
+                </div>
+            </div>
+            <!-- Additional Photo Cards -->       
+            
+            <div class="photo-card">
+                <img src="feliz cumpleaños amore.jpg" alt="Pareja mirando el atardecer juntos">
+                <div class="photo-caption">
+                    <h3>Una noche hermosa</h3>
+                    <p>Festejando un año mas de vida a la persona que amo</p>
+                </div>
+            </div>
+            <div class="photo-card">
+                <img src="Feliz dia de la novia.jpg" alt="Pareja compartiendo dulces momentos">
+                <div class="photo-caption">
+                    <h3>Hermoso recuerdo</h3>
+                    <p>Disfrutando el dia de la novia juntos</p>
+                </div>
+            </div>
+            
+            <div class="moments-section" id="adventures">
+                <div class="photo-card">
+                    <img src="7 colores 1.jpg" alt="Pareja abrazada frente a un hermoso atardecer en la playa">
+                    <div class="photo-caption">
+                        <h3>Juntos en el jardin botanico</h3>
+                        <p>Difrutando nuestro aniversario con distintas ropas</p>
+                    </div>
+                </div>
+                <div class="hidden-photos" id="adventures-photos">
+                    <div class="photo-card">
+                        <img src="7 colores 2.jpg" alt="Primera foto de nuestras aventuras">
+                    </div>
+                    <div class="photo-card">
+                        <img src="7 colores 3.jpg" alt="Segunda foto de nuestras aventuras">
+                    </div>
+                     <div class="photo-card">
+                        <img src="7 coolores 4.jpg" alt="Segunda foto de nuestras aventuras">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="poems">
+        <div class="container poems-container">
+            <div class="poem">
+                <h3>Eres</h3>
+                <p>Hay veces te subestimas demaciado,<br>
+                y tus miedos no te dejan ver la verdad.<br>
+                Eres una mujer marravillosa hermosa y gentil,<br>
+                agradezco al cielo por haberte conocido,<br>
+                Gracias por llegar a mi vida Mary.</p>
+                <div class="author">Eres mi luz en mi camino</div>
+            </div>
+            
+            <div class="poem">
+                <h3>Me enamore</h3>
+                <p>Simplemente me enamore sin darme cuenta,<br>
+                nose si algun dia dejare de quererte,<br>
+                nose si pueda, te amo Mary.</p>
+                <p>No sabemos lo que el futuro nos deparara,<br>
+                pero tengo claro que quiero que estes aqui,<br>
+                y tenerte a mi lado por siempre.</p>
+
+                <div class="author">Para ti, con todo mi amor</div>
+            </div>
+            
+            <div class="poem">
+                <h3>Me enamore</h3>
+                <p>Cuando mires para abajo,hacia tu propia sombra<br>
+                no olvides que yo siempre estare a tu lado,<br>
+                jamas olvides que hay una luz que te ilumina.</p>
+                <p>Sabes talvez no pueda darte un amor perfecto,<br>
+                pero si un amor verdadero, talvez no pueda darte<br>
+                lo mejor del mundo, pero si lo mejor de mi.<br>
+                Pero tal vez y solo talvez si hay una vida,<br>
+                despues de la muerte espero volver a conocerte.</p>
+
+                <div class="author">Eres lo mejor que me paso</div>
+            </div>
+
+            <div class="poem">
+                <h3>Mi Amor</h3>
+                <p>Esa mujer tan pequeña como una flor,<br>
+                como un petalo a la deriva del viento.<br>
+                Me atrae a ella como la fuerza que ejerce la tierra,<br>
+                de pronto cai ante ella sin razon,<br>
+                tal como lo hiso la manzana de newton,<br>
+                como un latido, como un fuerte latido,<br>
+                mi corazon llego del cielo a la tierra,<br>
+                en un vertiginoso movimiento.</p>
+
+                <div class="author">Mi gran amor</div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>Hecho con <span class="heart-icon">♥</span> especialmente para ti</p>
+            <p>Felices 8 meses a tu lado, amore mio</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Hearts animation
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const colors = ['#ff758f', '#ff7eb3', '#ffd166'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '♥';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    heart.style.setProperty('--delay', Math.random() * 5 + 's');
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 400);
+            }
+        }
+        
+        // Run hearts animation every 3 seconds
+        setInterval(createHearts, 3000);
+        
+        // Initial call
+        window.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Expandable galleries
+        document.querySelectorAll('.moments-section').forEach(section => {
+            section.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
